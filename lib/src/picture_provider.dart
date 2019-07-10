@@ -335,8 +335,10 @@ abstract class PictureProvider<T> {
           context: ErrorDescription('while resolving a picture'),
           silent: true, // could be a network error or whatnot
           informationCollector: () sync* {
-            yield DiagnosticsProperty<PictureProvider>('Picture provider', this);
-            yield DiagnosticsProperty<T>('Picture key', obtainedKey, defaultValue: null);
+            yield DiagnosticsProperty<PictureProvider>(
+                'Picture provider', this);
+            yield DiagnosticsProperty<T>('Picture key', obtainedKey,
+                defaultValue: null);
           }));
       return null;
     });
@@ -492,8 +494,8 @@ class NetworkPicture extends PictureProvider<NetworkPicture> {
       {PictureErrorListener onError}) {
     return OneFramePictureStreamCompleter(_loadAsync(key, onError: onError),
         informationCollector: () sync* {
-          yield DiagnosticsProperty<PictureProvider>('Picture provider', this);
-          yield DiagnosticsProperty<NetworkPicture>('Picture key', key);
+      yield DiagnosticsProperty<PictureProvider>('Picture provider', this);
+      yield DiagnosticsProperty<NetworkPicture>('Picture key', key);
     });
   }
 
